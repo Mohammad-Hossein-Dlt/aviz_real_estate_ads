@@ -8,35 +8,38 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: AnimationLimiter(
-          child: Column(
-            children: AnimationConfiguration.toStaggeredList(
-              duration: const Duration(milliseconds: 375),
-              childAnimationBuilder: (widget) => SlideAnimation(
-                horizontalOffset: 50.0,
-                child: FadeInAnimation(
-                  child: widget,
+        child: SingleChildScrollView(
+          child: AnimationLimiter(
+            child: Column(
+              children: AnimationConfiguration.toStaggeredList(
+                duration: const Duration(milliseconds: 375),
+                childAnimationBuilder: (widget) => SlideAnimation(
+                  horizontalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: widget,
+                  ),
                 ),
+                children: [
+                  const SizedBox(height: 10),
+                  const AvizLogoWithText(isActive: true),
+                  const SizedBox(height: 20),
+                  horizontalList("آویز های داغ"),
+                  const SizedBox(height: 20),
+                  verticalList("آویز های اخیر"),
+                ],
               ),
-              children: [
-                const SizedBox(height: 10),
-                const AvizLogoWithText(isActive: true),
-                const SizedBox(height: 20),
-                horizontalList("آویز های داغ"),
-                const SizedBox(height: 20),
-                verticalList("آویز های اخیر"),
-              ],
             ),
           ),
         ),
       ),
     );
   }
+
 
   Widget horizontalList(String title) {
     return Column(
