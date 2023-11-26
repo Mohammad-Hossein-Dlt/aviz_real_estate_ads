@@ -1,4 +1,4 @@
-name: ecommerce
+name: aviz
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -34,6 +34,11 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   pinput: ^3.0.1
   flutter_launcher_icons: ^0.13.1
+  path_provider: ^2.1.1
+  file_picker: ^6.1.1
+  flutter_staggered_animations: ^1.1.1
+  percent_indicator: ^4.2.3
+  flutter_animate: ^4.3.0
 
 
   # The following adds the Cupertino Icons font to your application.
