@@ -1,5 +1,5 @@
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 class AvizLogo extends StatelessWidget {

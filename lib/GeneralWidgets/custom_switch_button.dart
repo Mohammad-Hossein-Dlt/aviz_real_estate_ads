@@ -1,5 +1,5 @@
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 class CustomSwitchButton extends StatefulWidget {
@@ -7,10 +7,10 @@ class CustomSwitchButton extends StatefulWidget {
       {super.key,
       required this.title,
       required this.active,
-      required this.passActive});
+      required this.onPressed});
   final String title;
   bool active;
-  Function(bool isActive) passActive;
+  Function(bool isActive) onPressed;
   @override
   State<CustomSwitchButton> createState() => CustomSwitchButtonState();
 }
@@ -33,12 +33,13 @@ class CustomSwitchButtonState extends State<CustomSwitchButton> {
             style: TextButton.styleFrom(
               minimumSize: const Size(40, 48),
               maximumSize: const Size(40, 48),
+              padding: EdgeInsets.zero,
             ),
             onPressed: () {
               setState(() {
                 widget.active = !widget.active;
               });
-              widget.passActive(widget.active);
+              widget.onPressed(widget.active);
             },
             child: Icon(
               widget.active

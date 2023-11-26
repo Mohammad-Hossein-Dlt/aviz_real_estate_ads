@@ -1,7 +1,7 @@
-import 'package:ecommerce/Constants/colors.dart';
+import 'package:aviz/Constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:ecommerce/MainScreen/navigationbar.dart';
+import 'package:aviz/MainScreen/navigationbar.dart';
 import 'package:pinput/pinput.dart';
 
 class VerifyCode extends StatefulWidget {

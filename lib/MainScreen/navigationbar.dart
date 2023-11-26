@@ -1,10 +1,10 @@
-import 'package:ecommerce/AddAviz/categories_screen.dart';
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/logo.dart';
-import 'package:ecommerce/HomeScreen/home_screen.dart';
-import 'package:ecommerce/ProfileScreen/profile_screen.dart';
-import 'package:ecommerce/SearchScreen/search_screen.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/AddAviz/categories_screen.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/logo.dart';
+import 'package:aviz/HomeScreen/home_screen.dart';
+import 'package:aviz/ProfileScreen/profile_screen.dart';
+import 'package:aviz/SearchScreen/search_screen.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 class MainScreenNavigationBar extends StatefulWidget {
@@ -80,10 +80,10 @@ class _MainScreenNavigationBarState extends State<MainScreenNavigationBar> {
         child: Stack(alignment: Alignment.bottomCenter, children: [
           IndexedStack(
             index: curentIndex,
-            children: const [
-              ProfileScreen(),
-              CategoriesScreen(),
-              SearchScreen(),
+            children: [
+              const ProfileScreen(),
+              const CategoriesScreen(),
+              const SearchScreen(),
               HomeScreen(),
             ],
           ),

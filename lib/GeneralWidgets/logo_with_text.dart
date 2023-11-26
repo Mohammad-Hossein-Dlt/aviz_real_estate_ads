@@ -1,5 +1,5 @@
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/logo.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/logo.dart';
 import 'package:flutter/material.dart';
 
 class AvizLogoWithText extends StatelessWidget {

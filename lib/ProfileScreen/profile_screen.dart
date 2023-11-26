@@ -1,7 +1,7 @@
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/custom_title.dart';
-import 'package:ecommerce/GeneralWidgets/logo_with_text.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/custom_title.dart';
+import 'package:aviz/GeneralWidgets/logo_with_text.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Divider(),
+                child: Divider(color: grey2),
               ),
               const Column(
                 children: [
@@ -160,7 +160,7 @@ class ProfileScreen extends StatelessWidget {
       height: 95,
       decoration: BoxDecoration(
         border: Border.all(
-          color: grey,
+          color: grey2,
           width: 1,
         ),
         borderRadius: const BorderRadius.all(
@@ -193,9 +193,11 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: red,
-                            minimumSize: const Size(66, 32),
-                            elevation: 0),
+                          backgroundColor: red,
+                          minimumSize: const Size(66, 32),
+                          padding: const EdgeInsets.symmetric(horizontal: 6),
+                          elevation: 0,
+                        ),
                         onPressed: () {},
                         child: const Text("تایید شده"),
                       ),

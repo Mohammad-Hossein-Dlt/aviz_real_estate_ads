@@ -1,10 +1,10 @@
-import 'package:ecommerce/AddAviz/get_information.dart';
-import 'package:ecommerce/AddAviz/progressbar.dart';
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/add_aviz_appbar.dart';
-import 'package:ecommerce/GeneralWidgets/custom_switch_button.dart';
-import 'package:ecommerce/GeneralWidgets/custom_title.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/AddAviz/get_information.dart';
+import 'package:aviz/AddAviz/progressbar.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/add_aviz_appbar.dart';
+import 'package:aviz/GeneralWidgets/custom_switch_button.dart';
+import 'package:aviz/GeneralWidgets/custom_title.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 class AvizPossibilitiesScreen extends StatefulWidget {
@@ -36,7 +36,19 @@ class _AvizPossibilitiesScreenState extends State<AvizPossibilitiesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: addAvizAppBar,
+      appBar: addAvizAppBar(
+        ctx: context,
+        title: const Text(
+          "دسته بندی آویز",
+          style: TextStyle(
+            color: red,
+          ),
+        ),
+        backButton: () {
+          Navigator.of(context).pop();
+        },
+        exitButton: null,
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -220,21 +232,21 @@ class _AvizPossibilitiesScreenState extends State<AvizPossibilitiesScreen> {
                           CustomSwitchButton(
                             title: "آسانسور",
                             active: elevator,
-                            passActive: (isActive) {
+                            onPressed: (isActive) {
                               elevator = isActive;
                             },
                           ),
                           CustomSwitchButton(
                             title: "پارکینگ",
                             active: parking,
-                            passActive: (isActive) {
+                            onPressed: (isActive) {
                               parking = isActive;
                             },
                           ),
                           CustomSwitchButton(
                             title: "انباری",
                             active: warehouse,
-                            passActive: (isActive) {
+                            onPressed: (isActive) {
                               warehouse = isActive;
                             },
                           ),

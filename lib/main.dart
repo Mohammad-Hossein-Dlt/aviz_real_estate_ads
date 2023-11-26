@@ -1,5 +1,5 @@
-import 'package:ecommerce/WelcomeScreen/welcome_screen.dart';
-import 'package:ecommerce/paths.dart';
+import 'package:aviz/WelcomeScreen/welcome_screen.dart';
+import 'package:aviz/paths.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,10 +33,33 @@ class _AvizState extends State<Aviz> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          fontFamily: "Shabnam",
-          textTheme: const TextTheme(
-            titleMedium: TextStyle(color: Colors.black, fontFamily: "Shabnam"),
-          )),
+        appBarTheme: const AppBarTheme(
+          surfaceTintColor: Colors.transparent,
+        ),
+        fontFamily: "Shabnam",
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(color: Colors.black, fontFamily: "Shabnam"),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            shape: const ContinuousRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8))),
+            surfaceTintColor: Colors.transparent,
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            shape: const ContinuousRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8))),
+            surfaceTintColor: Colors.transparent,
+          ),
+        ),
+        cardTheme: const CardTheme(
+          color: Colors.white,
+          surfaceTintColor: Colors.transparent,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: const WelcomeScreen(),
     );

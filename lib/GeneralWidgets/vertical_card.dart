@@ -1,5 +1,5 @@
-import 'package:ecommerce/AvizScreen/aviz_screen.dart';
-import 'package:ecommerce/Constants/colors.dart';
+import 'package:aviz/AvizScreen/aviz_screen.dart';
+import 'package:aviz/Constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class VerticalCard extends StatelessWidget {
@@ -26,6 +26,9 @@ class VerticalCard extends StatelessWidget {
       child: Card(
         elevation: 2,
         shadowColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(4)),
+        ),
         child: SizedBox(
           width: 192,
           height: 235,
@@ -41,7 +44,7 @@ class VerticalCard extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(4)),
                         child: FittedBox(
                             fit: BoxFit.cover, child: Image.asset(image)))),
-                const SizedBox(height: 10),
+                const SizedBox(height: 6),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

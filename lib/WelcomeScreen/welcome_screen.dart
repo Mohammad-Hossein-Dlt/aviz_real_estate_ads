@@ -1,7 +1,7 @@
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/logo_with_text.dart';
-import 'package:ecommerce/LoginScreen/login_screen.dart';
-import 'package:ecommerce/LoginScreen/register_screen.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/logo_with_text.dart';
+import 'package:aviz/LoginScreen/login_screen.dart';
+import 'package:aviz/LoginScreen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart' as animate;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';

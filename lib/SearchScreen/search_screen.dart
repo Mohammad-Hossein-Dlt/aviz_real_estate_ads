@@ -1,6 +1,6 @@
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/logo_with_text.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/logo_with_text.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {

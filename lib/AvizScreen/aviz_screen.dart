@@ -1,7 +1,7 @@
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/custom_title.dart';
-import 'package:ecommerce/GeneralWidgets/map.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/custom_title.dart';
+import 'package:aviz/GeneralWidgets/map.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 class AvizScreen extends StatefulWidget {
@@ -63,7 +63,9 @@ class _AvizScreenState extends State<AvizScreen> {
         leadingWidth: 200,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             child: Transform.scale(
               scaleX: -1,
               child: const Icon(
@@ -278,8 +280,16 @@ class _AvizScreenState extends State<AvizScreen> {
   }
 
   Widget infoItems(String text) {
-    return InkWell(
-      onTap: () {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: curentInfoState == text ? red : Colors.white,
+        foregroundColor: Colors.white,
+        minimumSize: const Size(40, 40),
+        padding: const EdgeInsets.symmetric(horizontal: 6),
+        elevation: 0,
+        shadowColor: Colors.white,
+      ),
+      onPressed: () {
         setState(() {
           curentInfoState = text;
           if (curentInfoState == "مشخصات") {
@@ -301,25 +311,12 @@ class _AvizScreenState extends State<AvizScreen> {
           }
         });
       },
-      child: Container(
-        height: 40,
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(4)),
-            border: Border.all(color: curentInfoState == text ? red : grey),
-            color: curentInfoState == text ? red : Colors.white),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Text(
-              text,
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                color: curentInfoState == text ? Colors.white : red,
-                fontSize: 14,
-              ),
-            ),
-          ),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontWeight: FontWeight.w400,
+          color: curentInfoState == text ? Colors.white : red,
+          fontSize: 14,
         ),
       ),
     );
@@ -541,7 +538,7 @@ class _AvizScreenState extends State<AvizScreen> {
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: VerticalDivider(),
+                child: VerticalDivider(color: grey2),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -561,7 +558,7 @@ class _AvizScreenState extends State<AvizScreen> {
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: VerticalDivider(),
+                child: VerticalDivider(color: grey2),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -581,7 +578,7 @@ class _AvizScreenState extends State<AvizScreen> {
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: VerticalDivider(),
+                child: VerticalDivider(color: grey2),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,

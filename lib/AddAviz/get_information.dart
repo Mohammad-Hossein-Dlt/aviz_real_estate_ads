@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:ecommerce/AddAviz/aviz_image.dart';
-import 'package:ecommerce/AddAviz/progressbar.dart';
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/GeneralWidgets/add_aviz_appbar.dart';
-import 'package:ecommerce/GeneralWidgets/custom_switch_button.dart';
-import 'package:ecommerce/GeneralWidgets/custom_title.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/AddAviz/aviz_image.dart';
+import 'package:aviz/AddAviz/progressbar.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/GeneralWidgets/add_aviz_appbar.dart';
+import 'package:aviz/GeneralWidgets/custom_switch_button.dart';
+import 'package:aviz/GeneralWidgets/custom_title.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:flutter/material.dart';
 
 import '../paths.dart';
@@ -40,7 +40,32 @@ class _GetInformationScreenState extends State<GetInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: addAvizAppBar,
+      appBar: addAvizAppBar(
+        ctx: context,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "آویز",
+              style: TextStyle(
+                color: red,
+              ),
+            ),
+            SizedBox(width: 4),
+            Text(
+              "ثبت",
+              style: TextStyle(
+                color: grey4,
+              ),
+            ),
+          ],
+        ),
+        backButton: () {
+          Navigator.of(context).pop();
+        },
+        exitButton: null,
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -70,7 +95,7 @@ class _GetInformationScreenState extends State<GetInformationScreen> {
                           ),
                           const SizedBox(height: 10),
                           ImageItem(
-                            passName: (name) {
+                            onChanged: (name) {
                               imageName = name;
                             },
                           ),
@@ -163,14 +188,14 @@ class _GetInformationScreenState extends State<GetInformationScreen> {
                           CustomSwitchButton(
                             title: "فعال کردن گفتگو",
                             active: chat,
-                            passActive: (isActive) {
+                            onPressed: (isActive) {
                               chat = isActive;
                             },
                           ),
                           CustomSwitchButton(
                             title: "فعال کردن تماس",
                             active: call,
-                            passActive: (isActive) {
+                            onPressed: (isActive) {
                               call = isActive;
                             },
                           ),
@@ -183,11 +208,7 @@ class _GetInformationScreenState extends State<GetInformationScreen> {
                               backgroundColor: red,
                               minimumSize: const Size(320, 40),
                             ),
-                            onPressed: () {
-                              // Navigator.of(context).push(
-                              //   MaterialPageRoute(builder: (context) => GetLocation()),
-                              // );
-                            },
+                            onPressed: () {},
                             child: const Text("ثبت آگهی"),
                           ),
                           const SizedBox(height: 10),

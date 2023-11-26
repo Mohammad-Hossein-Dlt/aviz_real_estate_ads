@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:ecommerce/Constants/colors.dart';
-import 'package:ecommerce/iconsax_icons.dart';
+import 'package:aviz/Constants/colors.dart';
+import 'package:aviz/iconsax_icons.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +11,9 @@ import '../paths.dart';
 class ImageItem extends StatefulWidget {
   const ImageItem({
     super.key,
-    required this.passName,
+    required this.onChanged,
   });
-  final Function(String name) passName;
+  final Function(String name) onChanged;
   @override
   State<ImageItem> createState() => _ImageItemState();
 }
@@ -31,20 +31,19 @@ class _ImageItemState extends State<ImageItem> {
       if (await image_.exists()) {
         await image_.delete();
       }
-      // Naming And Copying Image to Document Name Directory
+      // Naming And Copying Image to Cache Directory
       // Get Curent Date
       DateTime now = DateTime.now();
       String creationDate =
           "${now.year}${now.month}${now.day}_${now.hour}${now.minute}${now.second}";
-      // Create File Name With Documnet Name And CreationDate
-      // String newImageName = "${widget.document.name}_$creationDate.jpg";
+      // Create File Name With CreationDate
       String newImageName = "$creationDate.jpg";
       // Find Image Path With NewImageName
       String newImagePath = "${AppDataDirectory.cache().path}/$newImageName";
       // Copying And Naming Image With NewImagePath
       File(result.files.single.path!).copy(newImagePath).then((value) {
         imageName = newImageName;
-        widget.passName(newImageName);
+        widget.onChanged(newImageName);
         setState(() {
           image = File(newImagePath);
           imageCache.clear();
