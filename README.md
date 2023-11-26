@@ -1,4 +1,4 @@
-# ecommerce
+# aviz
 
 A new Flutter project.
 
