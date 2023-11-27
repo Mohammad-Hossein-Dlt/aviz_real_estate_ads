@@ -1,6 +1,6 @@
 import 'package:aviz/constants/colors.dart';
 import 'package:aviz/constants/iconsax_icons.dart';
-import 'package:aviz/screens/addAviz/aviz_possibilities_screen.dart';
+import 'package:aviz/screens/addAviz/possibilities_screen.dart';
 import 'package:aviz/screens/addAviz/progressbar.dart';
 import 'package:aviz/widgets/add_aviz_appbar.dart';
 import 'package:aviz/widgets/custom_switch_button.dart';
@@ -85,7 +85,7 @@ class GetLocationScreen extends StatelessWidget {
                             // print(subCategory);
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                  builder: (context) => AvizPossibilitiesScreen(
+                                  builder: (context) => PossibilitiesScreen(
                                         subCategory: subCategory,
                                       )),
                             );
