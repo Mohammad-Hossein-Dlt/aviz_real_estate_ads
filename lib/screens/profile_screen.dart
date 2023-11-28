@@ -235,6 +235,7 @@ class ProfileScreen extends StatelessWidget {
           width: 343,
           height: 48,
           margin: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.only(left: 10, right: 8),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(4)),
             border: Border.all(color: grey),
@@ -246,13 +247,10 @@ class ProfileScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Icon(
-                    Iconsax.arrow_left_2,
-                    color: grey3,
-                    size: 24,
-                  ),
+                const Icon(
+                  Iconsax.arrow_left_2,
+                  color: grey3,
+                  size: 24,
                 ),
                 CustomTitle(text: text, icon: icon),
               ],
