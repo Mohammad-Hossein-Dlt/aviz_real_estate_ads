@@ -235,7 +235,6 @@ class ProfileScreen extends StatelessWidget {
           width: 343,
           height: 48,
           margin: const EdgeInsets.symmetric(vertical: 10),
-          padding: const EdgeInsets.only(left: 10, right: 8),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(4)),
             border: Border.all(color: grey),
@@ -244,16 +243,19 @@ class ProfileScreen extends StatelessWidget {
             onTap: () {
               onTap_();
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Icon(
-                  Iconsax.arrow_left_2,
-                  color: grey3,
-                  size: 24,
-                ),
-                CustomTitle(text: text, icon: icon),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10, right: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(
+                    Iconsax.arrow_left_2,
+                    color: grey3,
+                    size: 24,
+                  ),
+                  CustomTitle(text: text, icon: icon),
+                ],
+              ),
             ),
           ),
         ),
