@@ -38,73 +38,80 @@ class ProfileScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Divider(color: grey2),
               ),
-              const Column(
+              Column(
                 children: [
-                  ProfileItem(
+                  profileItem(
                     text: "آگهی های من",
-                    icon: Icon(
+                    icon: const Icon(
                       Iconsax.note_2,
                       color: red,
                       size: 24,
                     ),
+                    onTap_: () {},
                   ),
-                  ProfileItem(
+                  profileItem(
                     text: "پرداخت های من",
-                    icon: Icon(
+                    icon: const Icon(
                       Iconsax.card,
                       color: red,
                       size: 24,
                     ),
+                    onTap_: () {},
                   ),
-                  ProfileItem(
+                  profileItem(
                     text: "بازدید های اخیر",
-                    icon: Icon(
+                    icon: const Icon(
                       Iconsax.eye,
                       color: red,
                       size: 24,
                     ),
+                    onTap_: () {},
                   ),
-                  ProfileItem(
+                  profileItem(
                     text: "ذخیره شده ها",
-                    icon: Icon(
+                    icon: const Icon(
                       Iconsax.save_2,
                       color: red,
                       size: 24,
                     ),
+                    onTap_: () {},
                   ),
-                  ProfileItem(
+                  profileItem(
                     text: "تنظیمات",
-                    icon: Icon(
+                    icon: const Icon(
                       Iconsax.setting,
                       color: red,
                       size: 24,
                     ),
+                    onTap_: () {},
                   ),
-                  ProfileItem(
+                  profileItem(
                     text: "پشتیبانی و قوانین",
-                    icon: Icon(
+                    icon: const Icon(
                       Iconsax.message_question,
                       color: red,
                       size: 24,
                     ),
+                    onTap_: () {},
                   ),
-                  ProfileItem(
+                  profileItem(
                     text: "درباره آویز",
-                    icon: Icon(
+                    icon: const Icon(
                       Iconsax.info_circle,
                       color: red,
                       size: 24,
                     ),
+                    onTap_: () {},
                   ),
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  const Text(
                     "نسخه\n۱.۵.۹",
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 16,
                         color: grey3),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
               ),
             ],
@@ -218,14 +225,9 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-}
 
-class ProfileItem extends StatelessWidget {
-  const ProfileItem({super.key, required this.text, required this.icon});
-  final String text;
-  final Icon icon;
-  @override
-  Widget build(BuildContext context) {
+  Widget profileItem(
+      {required String text, required Icon icon, required Function onTap_}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -238,7 +240,9 @@ class ProfileItem extends StatelessWidget {
             border: Border.all(color: grey),
           ),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              onTap_();
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -250,24 +254,7 @@ class ProfileItem extends StatelessWidget {
                     size: 24,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: Text(
-                          text,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      icon,
-                    ],
-                  ),
-                ),
+                CustomTitle(text: text, icon: icon),
               ],
             ),
           ),
