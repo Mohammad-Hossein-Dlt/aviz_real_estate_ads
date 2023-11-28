@@ -98,4 +98,4 @@ flutter:
 
 flutter_launcher_icons:
   android: 'ic_launcher'
-  image_path: 'assets/images/lg.jpg'
+  image_path: 'assets/images/bg2.jpg'

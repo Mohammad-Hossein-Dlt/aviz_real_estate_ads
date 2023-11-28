@@ -8,7 +8,7 @@ import 'package:aviz/widgets/custom_title.dart';
 import 'package:flutter/material.dart';
 
 import 'aviz_image.dart';
-import 'progressbar.dart';
+import '../../widgets/add_aviz_progressbar.dart';
 
 class GetInformationScreen extends StatefulWidget {
   const GetInformationScreen({super.key});

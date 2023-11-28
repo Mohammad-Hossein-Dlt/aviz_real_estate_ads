@@ -1,6 +1,6 @@
 import 'package:aviz/constants/colors.dart';
 import 'package:aviz/constants/iconsax_icons.dart';
-import 'package:aviz/screens/addAviz/progressbar.dart';
+import 'package:aviz/widgets/add_aviz_progressbar.dart';
 import 'package:aviz/widgets/add_aviz_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
