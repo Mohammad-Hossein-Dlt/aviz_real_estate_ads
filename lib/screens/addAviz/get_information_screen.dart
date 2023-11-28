@@ -7,7 +7,7 @@ import 'package:aviz/widgets/custom_switch_button.dart';
 import 'package:aviz/widgets/custom_title.dart';
 import 'package:flutter/material.dart';
 
-import 'aviz_image.dart';
+import '../../widgets/aviz_image.dart';
 import '../../widgets/add_aviz_progressbar.dart';
 
 class GetInformationScreen extends StatefulWidget {
