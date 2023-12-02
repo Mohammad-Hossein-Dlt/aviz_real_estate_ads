@@ -186,6 +186,8 @@ class _PossibilitiesScreenState extends State<PossibilitiesScreen> {
                         ],
                       ),
                       const SizedBox(height: 20),
+                      const Divider(color: grey),
+                      const SizedBox(height: 20),
                       const CustomTitle(
                         text: "ویژگی ها",
                         icon: Icon(
@@ -216,6 +218,8 @@ class _PossibilitiesScreenState extends State<PossibilitiesScreen> {
                               Colors.black),
                         ],
                       ),
+                      const SizedBox(height: 20),
+                      const Divider(color: grey),
                       const SizedBox(height: 20),
                       const CustomTitle(
                         text: "امکانات",
@@ -265,6 +269,7 @@ class _PossibilitiesScreenState extends State<PossibilitiesScreen> {
                         },
                         child: const Text("بعدی"),
                       ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),

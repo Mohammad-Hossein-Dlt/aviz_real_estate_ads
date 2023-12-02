@@ -15,6 +15,12 @@ class _AvizScreenState extends State<AvizScreen> {
   String curentInfoState = "مشخصات";
   Widget details = Container();
 
+  Map<String, String> metaData = {
+    "title": "آپارتمان ۵۰۰ متری در صیاد شیرازی",
+    "creation-time": "۱۶ دقیقه پیش در گرگان",
+    "category": "آپارتمان",
+  };
+
   Map<String, String> specificationsList = {
     "ساخت": "۱۴۰۲",
     "طبقه": "دوبلکس",
@@ -112,7 +118,7 @@ class _AvizScreenState extends State<AvizScreen> {
             right: 0,
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
                     const SizedBox(height: 10),
@@ -123,43 +129,52 @@ class _AvizScreenState extends State<AvizScreen> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "۱۶ دقیقه پیش در گرگان",
+                          metaData["creation-time"] ?? "",
                           textDirection: TextDirection.rtl,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: grey3,
                               fontWeight: FontWeight.w400,
                               fontSize: 14),
                         ),
-                        Text(
-                          "آپارتمان",
-                          style: TextStyle(
-                              color: red,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 4, horizontal: 8),
+                          decoration: const BoxDecoration(
+                            color: grey,
+                            borderRadius: BorderRadius.all(Radius.circular(4)),
+                          ),
+                          child: Text(
+                            metaData["category"] ?? "",
+                            style: const TextStyle(
+                                color: red,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14),
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 20),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          "آپارتمان ۵۰۰ متری در صیاد شیرازی",
+                          metaData["title"] ?? "",
                           textDirection: TextDirection.rtl,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 16),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
+                    const Divider(color: grey),
+                    const SizedBox(height: 25),
                     Container(
                       width: 343,
                       height: 48,
-                      margin: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(4)),
@@ -190,7 +205,7 @@ class _AvizScreenState extends State<AvizScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -288,6 +303,7 @@ class _AvizScreenState extends State<AvizScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 6),
         elevation: 0,
         shadowColor: Colors.white,
+        side: BorderSide(color: curentInfoState == text ? red : grey),
       ),
       onPressed: () {
         setState(() {

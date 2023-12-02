@@ -145,7 +145,7 @@ class _VerifyCodeState extends State<VerifyCode> {
                           builder: (context) => MainScreenNavigationBar()),
                     );
                   },
-                  child: const Text("تایید ورود"),
+                  child: Text(widget.isLogin ? "تایید ورود" : "تایید ثبت نام"),
                 ),
                 const SizedBox(height: 20),
               ],

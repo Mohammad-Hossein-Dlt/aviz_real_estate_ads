@@ -92,7 +92,7 @@ class _GetInformationScreenState extends State<GetInformationScreen> {
                               size: 24,
                             ),
                           ),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 20),
                           ImageItem(
                             onChanged: (name) {
                               imageName = name;
@@ -107,7 +107,7 @@ class _GetInformationScreenState extends State<GetInformationScreen> {
                               size: 24,
                             ),
                           ),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 20),
                           Container(
                             width: 343,
                             // height: 48,
@@ -149,7 +149,7 @@ class _GetInformationScreenState extends State<GetInformationScreen> {
                               size: 24,
                             ),
                           ),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 20),
                           Container(
                             width: 343,
                             // height: 48,

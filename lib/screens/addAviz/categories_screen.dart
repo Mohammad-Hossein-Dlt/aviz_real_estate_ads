@@ -154,7 +154,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(4)),
-        border: Border.all(color: grey),
+        border: Border.all(color: grey1),
       ),
       child: InkWell(
         onTap: () {

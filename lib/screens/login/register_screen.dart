@@ -1,4 +1,5 @@
 import 'package:aviz/constants/colors.dart';
+import 'package:aviz/constants/iconsax_icons.dart';
 import 'login_screen.dart';
 import 'package:aviz/widgets/logo_with_text.dart';
 import 'package:flutter/material.dart';
@@ -133,7 +134,18 @@ class Register extends StatelessWidget {
                               )),
                     );
                   },
-                  child: const Text("مرحله بعد"),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Iconsax.arrow_left_2,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 6),
+                      Text("مرحله بعد"),
+                    ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

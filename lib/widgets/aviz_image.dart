@@ -56,7 +56,7 @@ class _ImageItemState extends State<ImageItem> {
   Widget build(BuildContext context) {
     return imageName.isEmpty
         ? DottedBorder(
-            color: grey3,
+            color: grey2,
             radius: const Radius.circular(2),
             dashPattern: const [4, 6],
             strokeWidth: 1.5,
@@ -134,16 +134,16 @@ class _ImageItemState extends State<ImageItem> {
               ),
               Positioned(
                 top: 6,
-                left: 0,
-                child: TextButton(
-                  style: TextButton.styleFrom(
+                left: 6,
+                child: IconButton(
+                  style: IconButton.styleFrom(
                     backgroundColor: Colors.white,
-                    shape: const CircleBorder(),
+                    padding: EdgeInsets.zero,
                   ),
                   onPressed: () async {
                     await Future(addImage);
                   },
-                  child: const Icon(
+                  icon: const Icon(
                     Iconsax.edit,
                     color: red,
                     size: 24,

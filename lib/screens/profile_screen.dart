@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 import '../constants/iconsax_icons.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
+  final Map<String, String> userData = {
+    "name": "سید محمد جواد هاشمی",
+    "phone-number": "۰۹۱۱۷۵۴۰۱۴۵",
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Divider(color: grey2),
+                child: Divider(color: grey),
               ),
               Column(
                 children: [
@@ -127,10 +132,9 @@ class ProfileScreen extends StatelessWidget {
       children: [
         Container(
           width: 343,
-          // height: 48,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(4)),
-            border: Border.all(color: grey, width: 2),
+            border: Border.all(color: grey1, width: 2),
           ),
           child: const Center(
             child: TextField(
@@ -168,7 +172,7 @@ class ProfileScreen extends StatelessWidget {
       height: 95,
       decoration: BoxDecoration(
         border: Border.all(
-          color: grey2,
+          color: grey1,
           width: 1,
         ),
         borderRadius: const BorderRadius.all(
@@ -185,33 +189,50 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Iconsax.edit,
-                        color: red,
-                        size: 24,
-                      ),
-                      Text("سید محمد جواد هاشمی"),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: red,
-                          minimumSize: const Size(66, 32),
-                          padding: const EdgeInsets.symmetric(horizontal: 6),
-                          elevation: 0,
+                  SizedBox(
+                    height: 28,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          style: IconButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                          ),
+                          onPressed: () {},
+                          icon: const Icon(
+                            Iconsax.edit,
+                            color: red,
+                            size: 24,
+                          ),
                         ),
-                        onPressed: () {},
-                        child: const Text("تایید شده"),
-                      ),
-                      const SizedBox(width: 10),
-                      const Text("۰۹۱۱۷۵۴۰۱۴۵"),
-                    ],
+                        Text(userData["name"] ?? ""),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 28,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: red,
+                            minimumSize: const Size(66, 26),
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            elevation: 0,
+                          ),
+                          onPressed: () {},
+                          child: const Text(
+                            "تایید شده",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ),
+                        // Text("تایید شده"),
+                        const SizedBox(width: 10),
+                        Text(userData["phone-number"] ?? ""),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -219,7 +240,11 @@ class ProfileScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(right: 4),
-            child: Image.asset("assets/images/profile.png"),
+            child: SizedBox(
+              width: 56,
+              height: 56,
+              child: Image.asset("assets/images/profile.png", scale: 1),
+            ),
           ),
         ],
       ),
@@ -237,7 +262,7 @@ class ProfileScreen extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(4)),
-            border: Border.all(color: grey),
+            border: Border.all(color: grey1),
           ),
           child: InkWell(
             onTap: () {

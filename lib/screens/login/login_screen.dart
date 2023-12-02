@@ -2,6 +2,7 @@ import 'package:aviz/constants/colors.dart';
 import 'package:aviz/widgets/logo_with_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/iconsax_icons.dart';
 import 'register_screen.dart';
 import 'verifycode_screen.dart';
 
@@ -104,7 +105,18 @@ class Login extends StatelessWidget {
                               )),
                     );
                   },
-                  child: const Text("مرحله بعد"),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Iconsax.arrow_left_2,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 6),
+                      Text("مرحله بعد"),
+                    ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

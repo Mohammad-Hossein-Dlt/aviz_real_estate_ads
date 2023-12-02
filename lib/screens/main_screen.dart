@@ -83,7 +83,7 @@ class _MainScreenNavigationBarState extends State<MainScreenNavigationBar> {
           IndexedStack(
             index: curentIndex,
             children: [
-              const ProfileScreen(),
+              ProfileScreen(),
               const CategoriesScreen(),
               const SearchScreen(),
               HomeScreen(),
