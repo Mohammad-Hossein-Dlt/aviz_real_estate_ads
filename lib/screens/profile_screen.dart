@@ -9,8 +9,8 @@ class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
 
   final Map<String, String> userData = {
-    "name": "سید محمد جواد هاشمی",
-    "phone-number": "۰۹۱۱۷۵۴۰۱۴۵",
+    "name":  "محمد حسین دولت آبادی",
+    "phone-number": "09123456789",
   };
 
   @override
