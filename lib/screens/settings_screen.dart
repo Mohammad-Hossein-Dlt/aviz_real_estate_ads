@@ -85,83 +85,65 @@ class _SettingsScreenState extends State<SettingsScreen> {
     String? subTitle,
     required Function(bool value) function,
   }) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return InkWell(
+      onTap: () {
+        setState(() {
+          function(!value);
+        });
+      },
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: SizedBox(
+                height: 36,
+                width: 46,
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: Switch(
+                    activeTrackColor: red,
+                    activeColor: Colors.white,
+                    value: value,
+                    onChanged: null,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: SizedBox(
-                                  height: 36,
-                                  width: 46,
-                                  child: FittedBox(
-                                    fit: BoxFit.fill,
-                                    child: Switch(
-                                      activeTrackColor: red,
-                                      activeColor: Colors.white,
-                                      value: value,
-                                      onChanged: (value_) {
-                                        setState(() {
-                                          function(value_);
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      title,
-                                      textDirection: TextDirection.rtl,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Visibility(
-                                      visible: subTitle != null,
-                                      child: Text(
-                                        subTitle ?? "",
-                                        textDirection: TextDirection.rtl,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          color: grey3,
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                  Text(
+                    title,
+                    textDirection: TextDirection.rtl,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Visibility(
+                    visible: subTitle != null,
+                    child: Text(
+                      subTitle ?? "",
+                      textDirection: TextDirection.rtl,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: grey3,
+                        fontSize: 14,
                       ),
                     ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

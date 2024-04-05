@@ -46,7 +46,6 @@ class _AvizListScreenState extends State<AvizListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(displayType);
     return Scaffold(
       backgroundColor: grey1,
       body: SafeArea(
@@ -101,7 +100,7 @@ class _AvizListScreenState extends State<AvizListScreen> {
                 preferredSize: const Size.fromHeight(0),
                 child: Container(
                   height: 1,
-                  color: Colors.grey.shade300,
+                  color: grey1,
                 ),
               ),
             ),
@@ -416,7 +415,12 @@ class _AvizListScreenState extends State<AvizListScreen> {
                       },
                       child: const Text("تایید"),
                     ),
+                    const SizedBox(width: 20),
                     TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        foregroundColor: Colors.white,
+                      ),
                       onPressed: () {
                         selectedCity = null;
                         Navigator.of(ctx).pop();
@@ -572,6 +576,7 @@ class _AvizListScreenState extends State<AvizListScreen> {
                       },
                       child: const Text("حذف"),
                     ),
+                    const SizedBox(width: 20),
                     TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.black,
