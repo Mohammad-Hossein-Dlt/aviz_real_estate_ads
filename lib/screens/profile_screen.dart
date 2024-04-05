@@ -1,18 +1,26 @@
 import 'package:aviz/constants/colors.dart';
+import 'package:aviz/sample_data.dart';
+import 'package:aviz/screens/my_aviz.dart';
+import 'package:aviz/screens/aviz_visit_screen.dart';
+import 'package:aviz/screens/payments_screen.dart';
+import 'package:aviz/screens/saved_aviz_screen.dart';
+import 'package:aviz/screens/settings_screen.dart';
+import 'package:aviz/screens/terms_and_conditions_screen.dart';
+import 'package:aviz/screens/user_acount_edit_screen.dart';
 import 'package:aviz/widgets/custom_title.dart';
 import 'package:aviz/widgets/logo_with_text.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/iconsax_icons.dart';
 
-class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
-  final Map<String, String> userData = {
-    "name":  "محمد حسین دولت آبادی",
-    "phone-number": "09123456789",
-  };
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
 
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +60,13 @@ class ProfileScreen extends StatelessWidget {
                       color: red,
                       size: 24,
                     ),
-                    onTap_: () {},
+                    onTap_: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MyAvizScreen(),
+                        ),
+                      );
+                    },
                   ),
                   profileItem(
                     text: "پرداخت های من",
@@ -61,7 +75,13 @@ class ProfileScreen extends StatelessWidget {
                       color: red,
                       size: 24,
                     ),
-                    onTap_: () {},
+                    onTap_: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => PaymentsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   profileItem(
                     text: "بازدید های اخیر",
@@ -70,7 +90,13 @@ class ProfileScreen extends StatelessWidget {
                       color: red,
                       size: 24,
                     ),
-                    onTap_: () {},
+                    onTap_: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => AvizVisitScreen(),
+                        ),
+                      );
+                    },
                   ),
                   profileItem(
                     text: "ذخیره شده ها",
@@ -79,7 +105,13 @@ class ProfileScreen extends StatelessWidget {
                       color: red,
                       size: 24,
                     ),
-                    onTap_: () {},
+                    onTap_: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => SavedAvizScreen(),
+                        ),
+                      );
+                    },
                   ),
                   profileItem(
                     text: "تنظیمات",
@@ -88,7 +120,13 @@ class ProfileScreen extends StatelessWidget {
                       color: red,
                       size: 24,
                     ),
-                    onTap_: () {},
+                    onTap_: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const SettingsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   profileItem(
                     text: "پشتیبانی و قوانین",
@@ -97,7 +135,14 @@ class ProfileScreen extends StatelessWidget {
                       color: red,
                       size: 24,
                     ),
-                    onTap_: () {},
+                    onTap_: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const TermsAndConditionsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   profileItem(
                     text: "درباره آویز",
@@ -198,14 +243,20 @@ class ProfileScreen extends StatelessWidget {
                           style: IconButton.styleFrom(
                             padding: EdgeInsets.zero,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => UserAcountEditScreen(),
+                              ),
+                            );
+                          },
                           icon: const Icon(
                             Iconsax.edit,
                             color: red,
                             size: 24,
                           ),
                         ),
-                        Text(userData["name"] ?? ""),
+                        Text(userSampleData["name"] ?? ""),
                       ],
                     ),
                   ),
@@ -230,7 +281,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         // Text("تایید شده"),
                         const SizedBox(width: 10),
-                        Text(userData["phone-number"] ?? ""),
+                        Text(userSampleData["phone-number"] ?? ""),
                       ],
                     ),
                   ),

@@ -37,7 +37,6 @@ dependencies:
   path_provider: ^2.1.1
   file_picker: ^6.1.1
   flutter_staggered_animations: ^1.1.1
-  percent_indicator: ^4.2.3
   flutter_animate: ^4.3.0
 
 

@@ -8,16 +8,19 @@ class AvizLogoWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           "آویز",
-          style:
-              TextStyle(color: red, fontWeight: FontWeight.w700, fontSize: 20),
+          style: TextStyle(
+              color: isActive ? red : grey3,
+              fontWeight: FontWeight.w700,
+              fontSize: 20),
         ),
+        // ignore: prefer_const_constructors
         SizedBox(width: 4),
-        AvizLogo(isActive: true),
+        AvizLogo(isActive: isActive),
       ],
     );
   }

@@ -1,16 +1,16 @@
 import 'package:aviz/constants/colors.dart';
 import 'package:aviz/constants/iconsax_icons.dart';
+import 'package:aviz/screens/addAviz/add_aviz.dart';
 import 'package:aviz/screens/profile_screen.dart';
 import 'package:aviz/screens/search_screen.dart';
 import 'package:aviz/widgets/logo.dart';
 
 import 'package:flutter/material.dart';
 
-import 'addAviz/categories_screen.dart';
 import 'home_screen.dart';
 
 class MainScreenNavigationBar extends StatefulWidget {
-  MainScreenNavigationBar({super.key});
+  const MainScreenNavigationBar({super.key});
 
   @override
   State<MainScreenNavigationBar> createState() =>
@@ -82,10 +82,10 @@ class _MainScreenNavigationBarState extends State<MainScreenNavigationBar> {
         child: Stack(alignment: Alignment.bottomCenter, children: [
           IndexedStack(
             index: curentIndex,
-            children: [
+            children: const [
               ProfileScreen(),
-              const CategoriesScreen(),
-              const SearchScreen(),
+              AddAvizScreen(),
+              SearchScreen(),
               HomeScreen(),
             ],
           ),

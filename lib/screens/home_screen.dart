@@ -1,42 +1,23 @@
+import 'dart:math';
+
 import 'package:aviz/constants/colors.dart';
+import 'package:aviz/sample_data.dart';
+import 'package:aviz/screens/aviz_list_screen.dart';
 import 'package:aviz/widgets/horizontal_card.dart';
 import 'package:aviz/widgets/logo_with_text.dart';
 import 'package:aviz/widgets/vertical_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
-  final Map<String, Map<String, String>> hotAviz = {
-    "1": {
-      "image": "assets/images/p2.png",
-      "title": "واحد ۵ خواب متراژ ۲۵۰",
-      "subTitle": "دکور شیک و مینیمال، موقعیت عالی، ۳ طبقه، ۳ واحد",
-      "price": "۲۵٬۶۸۳٬۰۰۰٬۰۰۰",
-    },
-    "2": {
-      "image": "assets/images/p1.png",
-      "title": "ویلا ۵۰۰ متری زیر قیمت",
-      "subTitle": "ویو عالی، سند تک برگ، سال ساخت ۱۴۰۲، تحویل فوری",
-      "price": "۸٬۲۰۰٬۰۰۰٬۰۰۰",
-    },
-  };
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
-  final Map<String, Map<String, String>> recentlyAviz = {
-    "1": {
-      "image": "assets/images/p3.png",
-      "title": "واحد دوبلکس فول امکانات",
-      "subTitle": "سال ساخت ۱۳۹۸، سند تک برگ، دوبلکس تجهیزات کامل",
-      "price": "۸٬۲۰۰٬۰۰۰٬۰۰۰",
-    },
-    "2": {
-      "image": "assets/images/p4.png",
-      "title": "پنت هاوس ۳۰۰ متری ناهارخوران",
-      "subTitle": "تحویل فوری، ویو عالی به همراه امکانات فول",
-      "price": "۵٬۹۰۰٬۰۰۰٬۰۰۰",
-    },
-  };
+class _HomeScreenState extends State<HomeScreen> {
+  Random random = Random();
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +39,9 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   const AvizLogoWithText(isActive: true),
                   const SizedBox(height: 20),
-                  horizontalList(title: "آویز های داغ", list: hotAviz),
+                  horizontalList(title: "آویز های داغ"),
                   const SizedBox(height: 20),
-                  verticalList(title: "آویز های اخیر", list: recentlyAviz),
+                  verticalList(title: "آویز های اخیر"),
                 ],
               ),
             ),
@@ -70,8 +51,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget horizontalList(
-      {required String title, required Map<String, Map<String, String>> list}) {
+  Widget horizontalList({
+    required String title,
+  }) {
     return Column(
       children: [
         Padding(
@@ -79,10 +61,21 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "مشاهده همه",
-                style: TextStyle(
-                    fontWeight: FontWeight.w400, fontSize: 14, color: grey3),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AvizListScreen(
+                        title: title,
+                      ),
+                    ),
+                  );
+                },
+                child: const Text(
+                  "مشاهده همه",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400, fontSize: 14, color: grey3),
+                ),
               ),
               Text(
                 title,
@@ -100,7 +93,9 @@ class HomeScreen extends StatelessWidget {
           reverse: true,
           child: Row(
             children: [
-              ...list.values
+              ...sampleData.values
+                  .toList()
+                  .sublist(4)
                   .map(
                     (e) => Padding(
                       padding: const EdgeInsets.only(left: 20),
@@ -109,19 +104,9 @@ class HomeScreen extends StatelessWidget {
                         title: e["title"] ?? "",
                         subTitle: e["subTitle"] ?? "",
                         price: e["price"] ?? "",
-                      ),
-                    ),
-                  )
-                  .toList(),
-              ...list.values
-                  .map(
-                    (e) => Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: VerticalCard(
-                        image: e["image"] ?? "",
-                        title: e["title"] ?? "",
-                        subTitle: e["subTitle"] ?? "",
-                        price: e["price"] ?? "",
+                        date: e["date"] ?? "",
+                        isLiked: random.nextInt(9) % 2 == 0,
+                        notification: random.nextInt(9) % 2 == 0,
                       ),
                     ),
                   )
@@ -134,8 +119,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget verticalList(
-      {required String title, required Map<String, Map<String, String>> list}) {
+  Widget verticalList({
+    required String title,
+  }) {
     return Column(
       children: [
         Padding(
@@ -143,10 +129,21 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "مشاهده همه",
-                style: TextStyle(
-                    fontWeight: FontWeight.w400, fontSize: 14, color: grey3),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AvizListScreen(
+                        title: title,
+                      ),
+                    ),
+                  );
+                },
+                child: const Text(
+                  "مشاهده همه",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400, fontSize: 14, color: grey3),
+                ),
               ),
               const SizedBox(height: 20),
               Text(
@@ -162,7 +159,9 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: 10),
         Column(
           children: [
-            ...list.values
+            ...sampleData.values
+                .toList()
+                .sublist(4, 8)
                 .map(
                   (e) => Padding(
                     padding: const EdgeInsets.only(bottom: 20),
@@ -171,19 +170,9 @@ class HomeScreen extends StatelessWidget {
                       title: e["title"] ?? "",
                       subTitle: e["subTitle"] ?? "",
                       price: e["price"] ?? "",
-                    ),
-                  ),
-                )
-                .toList(),
-            ...list.values
-                .map(
-                  (e) => Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: HorizontalCard(
-                      image: e["image"] ?? "",
-                      title: e["title"] ?? "",
-                      subTitle: e["subTitle"] ?? "",
-                      price: e["price"] ?? "",
+                      date: e["date"] ?? "",
+                      isLiked: random.nextInt(9) % 2 == 0,
+                      notification: random.nextInt(9) % 2 == 0,
                     ),
                   ),
                 )

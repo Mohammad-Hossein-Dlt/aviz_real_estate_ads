@@ -1,281 +1,269 @@
 import 'package:aviz/constants/colors.dart';
 import 'package:aviz/constants/iconsax_icons.dart';
-import 'package:aviz/screens/addAviz/get_information_screen.dart';
-import 'package:aviz/widgets/add_aviz_progressbar.dart';
-import 'package:aviz/widgets/add_aviz_appbar.dart';
+import 'package:aviz/screens/addAviz/aviz_data.dart';
 import 'package:aviz/widgets/custom_switch_button.dart';
 import 'package:aviz/widgets/custom_title.dart';
 import 'package:flutter/material.dart';
 
 class PossibilitiesScreen extends StatefulWidget {
-  const PossibilitiesScreen({super.key, required this.subCategory});
-  final List<String> subCategory;
+  const PossibilitiesScreen({
+    super.key,
+    required this.onChange,
+  });
+  final Function() onChange;
   @override
   State<PossibilitiesScreen> createState() => _PossibilitiesScreenState();
 }
 
 class _PossibilitiesScreenState extends State<PossibilitiesScreen> {
-  String category = "";
+  List subCategories = [];
 
-  TextEditingController rooms = TextEditingController();
-  TextEditingController floor = TextEditingController();
-  TextEditingController metrage = TextEditingController();
-  TextEditingController yearOfConstruction = TextEditingController();
+  // TextEditingController rooms = TextEditingController();
+  // TextEditingController floor = TextEditingController();
+  // TextEditingController metrage = TextEditingController();
+  // TextEditingController yearOfConstruction = TextEditingController();
 
-  bool elevator = true;
-  bool parking = false;
-  bool warehouse = true;
+  // bool elevator = true;
+  // bool parking = false;
+  // bool warehouse = true;
   @override
   void initState() {
     super.initState();
-    category = widget.subCategory.first;
+    subCategories = AvizData.categoriesList[AvizData.category] ?? [];
+    // category = widget.subCategories.isNotEmpty
+    //     ? widget.subCategories.contains(widget.selectedSubCategory)
+    //         ? widget.selectedSubCategory
+    //         : widget.subCategories.first
+    //     : "";
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: addAvizAppBar(
-        ctx: context,
-        title: const Text(
-          "دسته بندی آویز",
-          style: TextStyle(
-            color: red,
-          ),
-        ),
-        backButton: () {
-          Navigator.of(context).pop();
-        },
-        exitButton: null,
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                AddAvizProgressbar(progress: 0.8),
-              ],
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      const CustomTitle(
-                        text: "انتخاب دسته بندی آویز",
-                        icon: Icon(
-                          Iconsax.category,
-                          color: red,
-                          size: 24,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 160,
-                            child: Column(
-                              children: [
-                                const Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "محدوده ملک",
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: grey3,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Container(
-                                  width: 160,
-                                  height: 48,
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 4),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: grey),
-                                    color: grey,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(2)),
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      "خیابان صیاد شیرازی",
-                                      style: TextStyle(color: grey3),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 160,
-                            child: Column(
-                              children: [
-                                const Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "دسته بندی",
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: grey3,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Container(
-                                  width: 160,
-                                  height: 48,
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 4),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: grey),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(2)),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        Iconsax.arrow_down_1,
-                                        color: Colors.black,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      DropdownButton(
-                                        value: category,
-                                        elevation: 0,
-                                        underline: const SizedBox(),
-                                        icon: const SizedBox(),
-                                        items: widget.subCategory
-                                            .map((e) => DropdownMenuItem(
-                                                value: e,
-                                                child: SizedBox(
-                                                  width: 116,
-                                                  child: Text(
-                                                    e,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    textDirection:
-                                                        TextDirection.rtl,
-                                                  ),
-                                                )))
-                                            .toList(),
-                                        onChanged: (value) {
-                                          setState(() {
-                                            category = value ?? "";
-                                          });
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      const Divider(color: grey),
-                      const SizedBox(height: 20),
-                      const CustomTitle(
-                        text: "ویژگی ها",
-                        icon: Icon(
-                          Iconsax.clipboard,
-                          color: red,
-                          size: 24,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          attributesItem(
-                            "تعداد اتاق",
-                            "۶",
-                            rooms,
-                            grey3,
-                          ),
-                          attributesItem("متراژ", "۳۵۰", metrage, Colors.black),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          attributesItem("طبقه", "۳", floor, Colors.black),
-                          attributesItem("سال ساخت", "۱۴۰۲", yearOfConstruction,
-                              Colors.black),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      const Divider(color: grey),
-                      const SizedBox(height: 20),
-                      const CustomTitle(
-                        text: "امکانات",
-                        icon: Icon(
-                          Iconsax.magicpen,
-                          color: red,
-                          size: 24,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Column(
-                        children: [
-                          CustomSwitchButton(
-                            title: "آسانسور",
-                            active: elevator,
-                            onPressed: (isActive) {
-                              elevator = isActive;
-                            },
-                          ),
-                          CustomSwitchButton(
-                            title: "پارکینگ",
-                            active: parking,
-                            onPressed: (isActive) {
-                              parking = isActive;
-                            },
-                          ),
-                          CustomSwitchButton(
-                            title: "انباری",
-                            active: warehouse,
-                            onPressed: (isActive) {
-                              warehouse = isActive;
-                            },
-                          ),
-                        ],
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: red,
-                          minimumSize: const Size(320, 40),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const GetInformationScreen()),
-                          );
-                        },
-                        child: const Text("بعدی"),
-                      ),
-                      const SizedBox(height: 20),
-                    ],
-                  ),
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              const CustomTitle(
+                text: "انتخاب دسته بندی آویز",
+                icon: Icon(
+                  Iconsax.category,
+                  color: red,
+                  size: 24,
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 160,
+                    child: Column(
+                      children: [
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "محدوده ملک",
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: grey3,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          width: 160,
+                          height: 48,
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: grey),
+                            color: grey,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(2)),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "خیابان صیاد شیرازی",
+                              style: TextStyle(color: grey3),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 160,
+                    child: Column(
+                      children: [
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "دسته بندی",
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: grey3,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          width: 160,
+                          height: 48,
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: grey),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(2)),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Iconsax.arrow_down_1,
+                                color: Colors.black,
+                              ),
+                              const SizedBox(width: 10),
+                              DropdownButton(
+                                value: AvizData.subCategory,
+                                elevation: 0,
+                                underline: const SizedBox(),
+                                icon: const SizedBox(),
+                                items: subCategories
+                                    .map((e) => DropdownMenuItem(
+                                        value: e,
+                                        child: SizedBox(
+                                          width: 116,
+                                          child: Text(
+                                            e,
+                                            overflow: TextOverflow.ellipsis,
+                                            textDirection: TextDirection.rtl,
+                                          ),
+                                        )))
+                                    .toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    AvizData.subCategory = value.toString();
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Divider(),
+              const SizedBox(height: 20),
+              const CustomTitle(
+                text: "ویژگی ها",
+                icon: Icon(
+                  Iconsax.clipboard,
+                  color: red,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  attributesItem(
+                    "تعداد اتاق",
+                    "۶",
+                    AvizData.numberOfRooms,
+                    grey3,
+                  ),
+                  attributesItem(
+                    "متراژ",
+                    "۳۵۰",
+                    AvizData.metrage,
+                    Colors.black,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  attributesItem(
+                    "طبقه",
+                    "۳",
+                    AvizData.floor,
+                    Colors.black,
+                  ),
+                  attributesItem(
+                    "سال ساخت",
+                    "۱۴۰۲",
+                    AvizData.yearOfConstruction,
+                    Colors.black,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Divider(),
+              const SizedBox(height: 20),
+              const CustomTitle(
+                text: "امکانات",
+                icon: Icon(
+                  Iconsax.magicpen,
+                  color: red,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Column(
+                children: [
+                  CustomSwitchButton(
+                    title: "آسانسور",
+                    active: AvizData.elevator,
+                    onPressed: (isActive) {
+                      AvizData.elevator = isActive;
+                    },
+                  ),
+                  CustomSwitchButton(
+                    title: "پارکینگ",
+                    active: AvizData.parking,
+                    onPressed: (isActive) {
+                      AvizData.parking = isActive;
+                    },
+                  ),
+                  CustomSwitchButton(
+                    title: "انباری",
+                    active: AvizData.warehouse,
+                    onPressed: (isActive) {
+                      AvizData.warehouse = isActive;
+                    },
+                  ),
+                ],
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: red,
+                  minimumSize: const Size(320, 40),
+                ),
+                onPressed: () {
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //       builder: (context) => const GetInformationScreen()),
+                  // );
+                  widget.onChange();
+                },
+                child: const Text("بعدی"),
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
