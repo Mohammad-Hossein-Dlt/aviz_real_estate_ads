@@ -82,10 +82,10 @@ class _MainScreenNavigationBarState extends State<MainScreenNavigationBar> {
         child: Stack(alignment: Alignment.bottomCenter, children: [
           IndexedStack(
             index: curentIndex,
-            children: [
+            children: const [
               ProfileScreen(),
-              const AddAvizScreen(),
-              const SearchScreen(),
+              AddAvizScreen(),
+              SearchScreen(),
               HomeScreen(),
             ],
           ),

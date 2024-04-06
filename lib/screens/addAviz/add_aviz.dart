@@ -31,6 +31,8 @@ class _AddAvizScreenState extends State<AddAvizScreen> {
   AddAvizState state = CategotyState();
 
   double width = 0;
+  int progress = 0;
+  String title = "دسته بندی";
 
   Map<String, List<String>> categories = {
     "اجاره مسکونی": [
@@ -47,20 +49,31 @@ class _AddAvizScreenState extends State<AddAvizScreen> {
 
   AddAvizState onBackState() {
     if (state is CategotyState) {
+      title = "دسته بندی";
+
       return CategotyState();
     }
     if (state is SubCategotyState) {
+      title = "دسته بندی";
+
       return CategotyState();
     }
     if (state is GetLocationState) {
+      title = "دسته بندی";
+
       return SubCategotyState();
     }
     if (state is PossibilitiesState) {
+      title = "مکان";
+
       return GetLocationState();
     }
     if (state is GetInformationState) {
+      title = "ویژگی های";
+
       return PossibilitiesState();
     }
+
     return CategotyState();
   }
 
@@ -72,7 +85,6 @@ class _AddAvizScreenState extends State<AddAvizScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     AvizData.reset();
@@ -83,21 +95,25 @@ class _AddAvizScreenState extends State<AddAvizScreen> {
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
 
-    int progress = 0;
-
     if (state is CategotyState) {
+      title = "دسته بندی";
       progress = 0;
     }
     if (state is SubCategotyState) {
+      title = "دسته بندی";
+
       progress = 1;
     }
     if (state is GetLocationState) {
+      title = "مکان";
       progress = 2;
     }
     if (state is PossibilitiesState) {
+      title = "ویژگی های";
       progress = 3;
     }
     if (state is GetInformationState) {
+      title = "اطلاعات";
       progress = 4;
     }
 
@@ -150,11 +166,21 @@ class _AddAvizScreenState extends State<AddAvizScreen> {
               ),
             ),
           ],
-          title: const Text(
-            "دسته بندی آویز",
-            style: TextStyle(
-              color: red,
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "آویز",
+                style: TextStyle(
+                  color: red,
+                ),
+              ),
+              const SizedBox(width: 6),
+              Text(
+                title,
+                style: const TextStyle(),
+              ),
+            ],
           ),
         ),
         body: SafeArea(
